@@ -1,5 +1,6 @@
 package org.gof.rest.api;
 
+import org.gof.rest.utils.HttpClientUtil;
 import org.gof.rest.vo.SampleRequest;
 import org.gof.rest.vo.SampleResponse;
 import io.swagger.annotations.*;
@@ -36,7 +37,17 @@ public class SampleApiService {
         }else if("2".equals(sampleRequest.getType())){
             sampleResponse.setMessage("你选择了种类2");
         }else{
-            sampleResponse.setError("你选择了不存在的种类");
+            sampleResponse.setError("你选择了不存在的种类,请求测试接口");
+
+            String sampleJsonString = HttpClientUtil.doPostJson("http://test.nuskin.com.tw/" +
+                    "coreWS/api/product/category/3","{\n" +
+                    "  \"keyword\": \"\",\n" +
+                    "  \"category\": \"\",\n" +
+                    "  \"stockId\": [\n" +
+                    "    \"05003880\"\n" +
+                    "  ]\n" +
+                    "}");
+            sampleResponse.setMessage(sampleJsonString);
             return Response.status(500).entity(sampleResponse).build();
         }
         return Response.status(200).entity(sampleResponse).build();
