@@ -1,0 +1,13 @@
+项目更目录使用mvn clean install编译打包
+
+部署Tomcat以后使用以下链接可以查看接口文档
+localhost:8080/rest/apidocs/index.html
+
+请先请求Sample service中的login接口获取Token，使用Token请求其它接口
+
+SampleService为API接口的例子
+SampleRequest，SampleResponse为请求对象的例子
+
+AuthorizationRequestFilter为过滤，验证请求的例子，验证Header中的“Authorization_Token”
+项目使用的时候自己加上需要的依赖类和数据库的配置等
+
