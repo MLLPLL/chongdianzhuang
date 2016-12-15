@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 
-public class StationListResponse implements Serializable{
+public class StationsListResponse implements Serializable{
 
 	/**
 	 * 
@@ -22,7 +22,7 @@ public class StationListResponse implements Serializable{
 	private String itemSize;
 	
 	@XmlElement(name = "stationInfo")
-	private List stationInfo;
+	private List<StationInfo> stationInfo;
 
 	public String getPageNo() {
 		return pageNo;
@@ -48,11 +48,11 @@ public class StationListResponse implements Serializable{
 		this.itemSize = itemSize;
 	}
 
-	public List getStationInfo() {
+	public List<StationInfo> getStationInfo() {
 		return stationInfo;
 	}
 
-	public void setStationInfo(List stationInfo) {
+	public void setStationInfo(List<StationInfo> stationInfo) {
 		this.stationInfo = stationInfo;
 	}
 	

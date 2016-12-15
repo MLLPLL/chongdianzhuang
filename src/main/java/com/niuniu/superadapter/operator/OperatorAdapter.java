@@ -5,12 +5,12 @@ import java.util.List;
 
 import com.niuniu.superadapter.platform.StandardIcomm;
 import com.niuniu.superadapter.platform.StandardIserv;
-import com.niuniu.superadapter.platform.params.StationListRequest;
-import com.niuniu.superadapter.platform.params.StationListResponse;
+import com.niuniu.superadapter.platform.params.StationsListRequest;
+import com.niuniu.superadapter.platform.params.StationsListResponse;
 
 public class OperatorAdapter implements StandardIcomm,StandardIserv{
-	public StationListResponse queryStationsInfo(StationListRequest request){
-		StationListResponse response = null; 
+	public StationsListResponse queryStationsInfo(StationsListRequest request){
+		StationsListResponse response = null; 
 		response.setPageNo("1");
 		response.setPageCount("1");//有待商定
 		int itemsize = 0;
@@ -18,7 +18,7 @@ public class OperatorAdapter implements StandardIcomm,StandardIserv{
 		try{
 			List<NiuniuOperator> operators =  OperatorFactory.getAllOperators();
 			for(int i=0 ; i< operators.size(); i++){
-				StationListResponse res = ((NiuniuOperator)operators.get(i)).queryStationsInfo(request);
+				StationsListResponse res = ((NiuniuOperator)operators.get(i)).queryStationsInfo(request);
 				itemsize = itemsize + Integer.valueOf(res.getItemSize()).intValue();
 				itemList.addAll(res.getStationInfo());
 			}

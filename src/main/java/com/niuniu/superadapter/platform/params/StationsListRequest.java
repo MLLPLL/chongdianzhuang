@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class StationListRequest implements Serializable{
+public class StationsListRequest implements Serializable{
 
 	/**
 	 * 
