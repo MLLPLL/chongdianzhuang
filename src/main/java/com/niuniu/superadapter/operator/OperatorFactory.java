@@ -7,9 +7,9 @@ import com.niuniu.superadapter.operator.hlht.HlhtOperator;
 import com.niuniu.superadapter.operator.xinxin.XinxinOperator;
 
 public class OperatorFactory {
-	private static NiuniuOperator HLHT = new HlhtOperator();
-	private static NiuniuOperator XINXIN = new XinxinOperator();
-	private static List<NiuniuOperator> ALLOPERATORS = new ArrayList<NiuniuOperator>();
+	private static OperatorStub HLHT = new HlhtOperator();
+	private static OperatorStub XINXIN = new XinxinOperator();
+	private static List<OperatorStub> ALLOPERATORS = new ArrayList<OperatorStub>();
 	static {
 		ALLOPERATORS.add(HLHT);
 		ALLOPERATORS.add(XINXIN);
@@ -18,7 +18,7 @@ public class OperatorFactory {
 		
 	}	
 
-	public static NiuniuOperator getOperator(String operator_type) throws Exception{
+	public static OperatorStub getOperator(String operator_type) throws Exception{
 		if("hlht".equals(operator_type)){
 			return HLHT;
 		}else if("xinxin".equals(operator_type)){
@@ -28,7 +28,7 @@ public class OperatorFactory {
 		}
 	}
 	
-	public static List<NiuniuOperator> getAllOperators() throws Exception{
+	public static List<OperatorStub> getAllOperators() throws Exception{
 		if(2 != ALLOPERATORS.size()){
 			throw new Exception();
 		}
