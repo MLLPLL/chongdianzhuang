@@ -20,13 +20,13 @@ public class OperatorAdapter implements StandardIcomm,StandardIserv{
 			for(int i=0 ; i< operators.size(); i++){
 				StationsListResponse res = ((StandardOperator)operators.get(i)).queryStationsInfo(request);
 				itemsize = itemsize + Integer.valueOf(res.getItemSize()).intValue();
-				itemList.addAll(res.getStationInfo());
+				itemList.addAll(res.getStationInfos());
 			}
 		}catch(Exception e){
 			
 		}		
 		response.setItemSize(String.valueOf(itemsize));
-		response.setStationInfo(itemList);
+		response.setStationInfos(itemList);
 		return response;
 	}
 }
