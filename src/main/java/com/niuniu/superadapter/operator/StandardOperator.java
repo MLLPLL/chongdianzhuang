@@ -5,6 +5,6 @@ import com.niuniu.superadapter.platform.StandardIserv;
 import com.niuniu.superadapter.platform.params.StationsListRequest;
 import com.niuniu.superadapter.platform.params.StationsListResponse;
 
-public class OperatorStub implements StandardIcomm,StandardIserv{
+public class StandardOperator implements StandardIcomm,StandardIserv{
 	public StationsListResponse queryStationsInfo(StationsListRequest request){return null;}
 }

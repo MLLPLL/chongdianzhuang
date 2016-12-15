@@ -16,9 +16,9 @@ public class OperatorAdapter implements StandardIcomm,StandardIserv{
 		int itemsize = 0;
 		List itemList = new ArrayList();
 		try{
-			List<OperatorStub> operators =  OperatorFactory.getAllOperators();
+			List<StandardOperator> operators =  OperatorFactory.getAllOperators();
 			for(int i=0 ; i< operators.size(); i++){
-				StationsListResponse res = ((OperatorStub)operators.get(i)).queryStationsInfo(request);
+				StationsListResponse res = ((StandardOperator)operators.get(i)).queryStationsInfo(request);
 				itemsize = itemsize + Integer.valueOf(res.getItemSize()).intValue();
 				itemList.addAll(res.getStationInfo());
 			}
