@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HlhtStationsListResponse implements Serializable{
@@ -18,16 +20,20 @@ public class HlhtStationsListResponse implements Serializable{
 	private static final long serialVersionUID = -1584496651949877422L;
 
 	@XmlElement(name = "pageNo")
+	@JsonProperty(value = "PageNo")
 	private String pageNo;
 	
 	@XmlElement(name = "pageCount")
+	@JsonProperty(value = "PageCount")
 	private String pageCount;
 	
 	@XmlElement(name = "itemSize")
+	@JsonProperty(value = "ItemSize")
 	private String itemSize;
 	
 	@XmlElement(name = "stationInfo")
-	private List<HlhtStationInfo> stationInfo;
+	@JsonProperty(value = "StationInfos")
+	private List<HlhtStationInfo> stationInfos;
 
 	public String getPageNo() {
 		return pageNo;
@@ -53,11 +59,11 @@ public class HlhtStationsListResponse implements Serializable{
 		this.itemSize = itemSize;
 	}
 
-	public List<HlhtStationInfo> getStationInfo() {
-		return stationInfo;
+	public List<HlhtStationInfo> getStationInfos() {
+		return stationInfos;
 	}
 
-	public void setStationInfo(List<HlhtStationInfo> stationInfo) {
-		this.stationInfo = stationInfo;
+	public void setStationInfos(List<HlhtStationInfo> stationInfo) {
+		this.stationInfos = stationInfo;
 	}
 }

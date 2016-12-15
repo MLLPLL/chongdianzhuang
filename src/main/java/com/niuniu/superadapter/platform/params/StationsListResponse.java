@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.niuniu.superadapter.operator.hlht.params.HlhtStationInfo;
+
 public class StationsListResponse implements Serializable{
 
 	/**
@@ -13,16 +16,20 @@ public class StationsListResponse implements Serializable{
 	private static final long serialVersionUID = 5519526988743756743L;
 	
 	@XmlElement(name = "pageNo")
+	@JsonProperty(value = "PageNo")
 	private String pageNo;
 	
 	@XmlElement(name = "pageCount")
+	@JsonProperty(value = "PageCount")
 	private String pageCount;
 	
 	@XmlElement(name = "itemSize")
+	@JsonProperty(value = "ItemSize")
 	private String itemSize;
 	
 	@XmlElement(name = "stationInfo")
-	private List<StationInfo> stationInfo;
+	@JsonProperty(value = "StationInfos")
+	private List<StationInfo> stationInfos;
 
 	public String getPageNo() {
 		return pageNo;
@@ -48,12 +55,12 @@ public class StationsListResponse implements Serializable{
 		this.itemSize = itemSize;
 	}
 
-	public List<StationInfo> getStationInfo() {
-		return stationInfo;
+	public List<StationInfo> getStationInfos() {
+		return stationInfos;
 	}
 
-	public void setStationInfo(List<StationInfo> stationInfo) {
-		this.stationInfo = stationInfo;
+	public void setStationInfos(List<StationInfo> stationInfo) {
+		this.stationInfos = stationInfo;
 	}
 	
 	

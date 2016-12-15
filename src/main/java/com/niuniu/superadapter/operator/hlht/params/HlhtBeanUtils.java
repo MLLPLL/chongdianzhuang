@@ -96,11 +96,11 @@ public class HlhtBeanUtils {
 		pfBean.setPageNo(bean.getPageNo());
 		
 		List list = new ArrayList();
-		List list1 = bean.getStationInfo();
+		List list1 = bean.getStationInfos();
 		for(int i=0; i<list.size(); i++){
 			list.add(HlhtBeanUtils.getPFBean((HlhtStationInfo)list1.get(i)));
 		}
-		pfBean.setStationInfo(list);
+		pfBean.setStationInfos(list);
 		return pfBean;
 	}
 	
@@ -110,11 +110,11 @@ public class HlhtBeanUtils {
 		operatorBean.setPageNo(bean.getPageNo());
 		
 		List list = new ArrayList();
-		List list1 = bean.getStationInfo();
+		List list1 = bean.getStationInfos();
 		for(int i=0; i<list.size(); i++){
 			list.add(HlhtBeanUtils.getOperatorBean((StationInfo)list1.get(i)));
 		}
-		operatorBean.setStationInfo(list);
+		operatorBean.setStationInfos(list);
 		return operatorBean;
 	}
 }
