@@ -14,7 +14,7 @@ public class HlhtBeanUtils {
 	
 	public static StationInfo getPFBean(HlhtStationInfo bean){
 		StationInfo pfBean = new StationInfo();
-		pfBean.setAdress(bean.getAdress());
+		pfBean.setAddress(bean.getAdress());
 		pfBean.setAreaCode(bean.getAreaCode());
 		pfBean.setBusineHours(bean.getBusineHours());
 		pfBean.setConstruction(bean.getConstruction());
@@ -38,14 +38,14 @@ public class HlhtBeanUtils {
 		pfBean.setStationName(bean.getStationName());
 		pfBean.setStationTel(bean.getStationTel());
 		pfBean.setStationType(bean.getStationType());
-		pfBean.setStatusStatus(bean.getStatusStatus());
+		pfBean.setStationStatus(bean.getStatusStatus());
 		pfBean.setSupportOrder(bean.getSupportOrder());
 		return pfBean;
 	}
 	
 	public static HlhtStationInfo getOperatorBean(StationInfo bean){
 		HlhtStationInfo operatorBean = new HlhtStationInfo();
-		operatorBean.setAdress(bean.getAdress());
+		operatorBean.setAdress(bean.getAddress());
 		operatorBean.setAreaCode(bean.getAreaCode());
 		operatorBean.setBusineHours(bean.getBusineHours());
 		operatorBean.setConstruction(bean.getConstruction());
@@ -69,7 +69,7 @@ public class HlhtBeanUtils {
 		operatorBean.setStationName(bean.getStationName());
 		operatorBean.setStationTel(bean.getStationTel());
 		operatorBean.setStationType(bean.getStationType());
-		operatorBean.setStatusStatus(bean.getStatusStatus());
+		operatorBean.setStatusStatus(bean.getStationStatus());
 		operatorBean.setSupportOrder(bean.getSupportOrder());
 		return operatorBean;
 	}

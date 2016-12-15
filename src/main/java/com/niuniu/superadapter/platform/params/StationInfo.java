@@ -1,5 +1,8 @@
 package com.niuniu.superadapter.platform.params;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+
 import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,81 +20,107 @@ public class StationInfo implements Serializable{
 	private static final long serialVersionUID = -7349848729691274028L;
 	
 	@XmlElement(name = "stationID")
+	@JsonProperty(value = "StationID")
 	private String stationID;
 	
 	@XmlElement(name = "operatorID")
+	@JsonProperty(value = "OperatorID")
 	private String operatorID;
 	
 	@XmlElement(name = "equipmentOwnerID")
+	@JsonProperty(value = "EquipmentOwnerID")
 	private String equipmentOwnerID;
 	
 	@XmlElement(name = "stationName")
+	@JsonProperty(value = "StationName")
 	private String stationName;
 	
 	@XmlElement(name = "countryCode")
+	@JsonProperty(value = "CountryCode")
 	private String countryCode;
 	
 	@XmlElement(name = "areaCode")
+	@JsonProperty(value = "AreaCode")
 	private String areaCode;
 	
-	@XmlElement(name = "adress")
-	private String adress;
+	@XmlElement(name = "address")
+	@JsonProperty(value = "Address")
+	private String address;
 	
 	@XmlElement(name = "stationTel")
+	@JsonProperty(value = "StationTel")
 	private String stationTel;
 	
 	@XmlElement(name = "serviceTel")
+	@JsonProperty(value = "ServiceTel")
 	private String serviceTel;
 	
 	@XmlElement(name = "stationType")
+	@JsonProperty(value = "StationType")
 	private String stationType;
 	
-	@XmlElement(name = "statusStatus")
-	private String statusStatus;
+	@XmlElement(name = "stationStatus")
+	@JsonProperty(value = "StationStatus")
+	private String stationStatus;
 	
 	@XmlElement(name = "parkNums")
+	@JsonProperty(value = "ParkNums")
 	private String parkNums;
 	
 	@XmlElement(name = "stationLng")
+	@JsonProperty(value = "StationLng")
 	private String stationLng;
 	
 	@XmlElement(name = "stationLat")
+	@JsonProperty(value = "StationLat")
 	private String stationLat;
 	
 	@XmlElement(name = "siteGuide")
+	@JsonProperty(value = "SiteGuide")
 	private String siteGuide;
 	
 	@XmlElement(name = "construction")
+	@JsonProperty(value = "Construction")
 	private String construction;
 	
 	@XmlElement(name = "picture")
+	@JsonProperty(value = "Picture")
 	private String[] picture;
 	
 	@XmlElement(name = "matchCars")
+	@JsonProperty(value = "MatchCars")
 	private String matchCars;
 	
 	@XmlElement(name = "parkInfo")
+	@JsonProperty(value = "ParkInfo")
 	private String parkInfo;
 	
 	@XmlElement(name = "busineHours")
+	@JsonProperty(value = "BusineHours")
 	private String busineHours;
 	
 	@XmlElement(name = "electricityFee")
+	@JsonProperty(value = "ElectricityFee")
 	private String electricityFee;
 	
 	@XmlElement(name = "serviceFee")
+	@JsonProperty(value = "ServiceFee")
 	private String serviceFee;
 	
 	@XmlElement(name = "parkFee")
+	@JsonProperty(value = "ParkFee")
 	private String parkFee;
 	
 	@XmlElement(name = "payment")
+	@JsonProperty(value = "Payment")
 	private String payment;
 	
 	@XmlElement(name = "supportOrder")
+	@JsonProperty(value = "SupportOrder")
 	private String supportOrder;
 	
 	@XmlElement(name = "remark")
+	@JsonProperty(value = "Remark")
 	private String remark;
 
 	public String getStationID() {
@@ -142,12 +171,12 @@ public class StationInfo implements Serializable{
 		this.areaCode = areaCode;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getStationTel() {
@@ -174,12 +203,12 @@ public class StationInfo implements Serializable{
 		this.stationType = stationType;
 	}
 
-	public String getStatusStatus() {
-		return statusStatus;
+	public String getStationStatus() {
+		return stationStatus;
 	}
 
-	public void setStatusStatus(String statusStatus) {
-		this.statusStatus = statusStatus;
+	public void setStationStatus(String stationStatus) {
+		this.stationStatus = stationStatus;
 	}
 
 	public String getParkNums() {

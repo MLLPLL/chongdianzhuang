@@ -196,5 +196,37 @@ public class HttpClientUtil {
 		}
 		return result;
 	}
-	
+
+
+	public static String doPostJson(String url, String params,String Authorization) {
+		String result = null;
+		HttpPost post = new HttpPost(url);
+		try {
+			StringEntity myEntity = new StringEntity(params, "UTF-8");
+			post.addHeader("Content-Type", "application/json");
+			post.addHeader("Authorization",Authorization);
+			post.setEntity(myEntity);
+			HttpResponse response = getHttpClient().execute(post);
+			HttpEntity resEntity = response.getEntity();
+			int statusCode = response.getStatusLine().getStatusCode();
+			if (statusCode != OK) {
+				post.abort();
+				return null;
+			}
+			if (resEntity != null) {
+				String respBody = EntityUtils.toString(resEntity);
+				try {
+					result = respBody;
+				} catch (Exception e) {
+					logger.error("+++++==> respBody:" + respBody + " <==+++++",e);
+				}
+			}
+		} catch (IOException e) {
+			logger.error("+++++==> doPostJson:" + url + " <==+++++", e);
+		} finally {
+			post.releaseConnection();
+		}
+		return result;
+	}
+
 }
