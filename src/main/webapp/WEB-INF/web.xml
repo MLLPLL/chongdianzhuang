@@ -40,7 +40,8 @@
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
             <param-value>
-                io.swagger.jaxrs.listing,org.gof.rest.api,org.gof.rest.filters
+                io.swagger.jaxrs.listing,org.gof.rest.filters,
+                com.niuniu.superadapter.platform
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
