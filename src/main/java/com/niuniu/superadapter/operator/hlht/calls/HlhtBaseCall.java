@@ -17,22 +17,33 @@ import java.util.Map;
  * Created by Alex.Chen on 2016/12/16.
  */
 public class HlhtBaseCall {
-    public static String encryptData(String data) throws Exception {
+
+    public static String getResponseJson(String requestJson) throws Exception {
+        ObjectMapper objectMapper = JsonUtils.getObjectMapper();
+        String timeStemp = createTimeStemp();
+        String encryptData = encryptData(requestJson);
+        String sig = createSig(encryptData,timeStemp);
+        String body = createBody(encryptData,sig,timeStemp,objectMapper);
+        String responseJson = getResponseDataWhitAuth(body, HlhtConfig.STATIONS_URL ,objectMapper);
+        return responseJson;
+    }
+
+    private static String encryptData(String data) throws Exception {
         return AESUtil.Encrypt(data, HlhtConfig.SECURITY_KEY, HlhtConfig.AES_SECURITY);
     }
 
-    public static String createTimeStemp() {
+    private static String createTimeStemp() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmssSSS");
         String timeStemp = sdf.format(new Date());
         return timeStemp;
     }
 
-    public static String createSig(String encryptData, String timeStemp) {
+    private static String createSig(String encryptData, String timeStemp) {
         return HMacMD5.getHmacMd5Str(HlhtConfig.SECURITY_KEY,
                 HlhtConfig.OperatorID + encryptData + timeStemp + timeStemp);
     }
 
-    public static String createBody(String encryptData, String sig,
+    private static String createBody(String encryptData, String sig,
                                     String timeStemp, ObjectMapper objectMapper) throws JsonProcessingException {
         HlhtNormalRequest hlhtNormalRequest = new HlhtNormalRequest();
         hlhtNormalRequest.setOperatorID(HlhtConfig.OperatorID);
@@ -51,7 +62,7 @@ public class HlhtBaseCall {
         return data;
     }
 
-    public static String getResponseDataWhitAuth(String body, String url,
+    private static String getResponseDataWhitAuth(String body, String url,
                                                ObjectMapper objectMapper) throws Exception {
         String token = getToken();
         String auth = "Bearer " + token;

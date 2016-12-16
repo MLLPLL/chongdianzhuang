@@ -14,13 +14,9 @@ public class HlhtStationsListCall extends HlhtBaseCall {
 
     public static HlhtStationsListResponse call(HlhtStationsListRequest request) throws Exception {
         ObjectMapper objectMapper = JsonUtils.getObjectMapper();
-        String timeStemp = createTimeStemp();
         String data = objectMapper.writeValueAsString(request);
-        String encryptData = encryptData(data);
-        String sig = createSig(encryptData,timeStemp);
-        String body = createBody(encryptData,sig,timeStemp,objectMapper);
-        String responseDataString = getResponseDataWhitAuth(body, HlhtConfig.STATIONS_URL ,objectMapper);
-        HlhtStationsListResponse hlhtStationsListResponse = objectMapper.readValue(responseDataString, HlhtStationsListResponse.class);
+        String responseJson = getResponseJson(data);
+        HlhtStationsListResponse hlhtStationsListResponse = objectMapper.readValue(responseJson, HlhtStationsListResponse.class);
         return hlhtStationsListResponse;
     }
 
