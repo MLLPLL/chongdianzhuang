@@ -13,10 +13,8 @@ import org.gof.rest.utils.JsonUtils;
 public class HlhtStationsListCall extends HlhtBaseCall {
 
     public static HlhtStationsListResponse call(HlhtStationsListRequest request) throws Exception {
-        ObjectMapper objectMapper = JsonUtils.getObjectMapper();
-        String data = objectMapper.writeValueAsString(request);
-        String responseJson = getResponseJson(data);
-        HlhtStationsListResponse hlhtStationsListResponse = objectMapper.readValue(responseJson, HlhtStationsListResponse.class);
+        HlhtStationsListResponse hlhtStationsListResponse =
+                (HlhtStationsListResponse) getResponseJson(request, HlhtStationsListResponse.class);
         return hlhtStationsListResponse;
     }
 

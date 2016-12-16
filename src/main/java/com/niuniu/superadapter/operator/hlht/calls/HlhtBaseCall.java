@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.niuniu.superadapter.operator.hlht.HlhtConfig;
 import com.niuniu.superadapter.operator.hlht.params.HlhtNormalRequest;
+import com.niuniu.superadapter.operator.hlht.params.HlhtStationsListResponse;
 import org.gof.rest.utils.AESUtil;
 import org.gof.rest.utils.HMacMD5;
 import org.gof.rest.utils.HttpClientUtil;
@@ -18,14 +19,16 @@ import java.util.Map;
  */
 public class HlhtBaseCall {
 
-    public static String getResponseJson(String requestJson) throws Exception {
+    public static Object getResponseJson(Object request, Class clazz) throws Exception {
         ObjectMapper objectMapper = JsonUtils.getObjectMapper();
         String timeStemp = createTimeStemp();
-        String encryptData = encryptData(requestJson);
+        String data = objectMapper.writeValueAsString(request);
+        String encryptData = encryptData(data);
         String sig = createSig(encryptData,timeStemp);
         String body = createBody(encryptData,sig,timeStemp,objectMapper);
         String responseJson = getResponseDataWhitAuth(body, HlhtConfig.STATIONS_URL ,objectMapper);
-        return responseJson;
+        Object object = objectMapper.readValue(responseJson, HlhtStationsListResponse.class);
+        return object;
     }
 
     private static String encryptData(String data) throws Exception {
